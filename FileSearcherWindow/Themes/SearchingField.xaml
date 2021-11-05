@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="SearchingField">
+        <Setter Property="Control.Foreground" Value="Gray"/>
+        <Setter Property="Control.FontWeight" Value="Medium"/>
+        <Setter Property="Control.Margin" Value="8"/>
+
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border CornerRadius="8"
+                            Background="#2F3136">
+                        <Grid>
+                            <TextBox VerticalAlignment="Stretch"
+                                     VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Stretch"
+                                     x:Name="SearchingField"
+                                     Text="{TemplateBinding Text}"
+                                     Background="Transparent"
+                                     TextWrapping="Wrap"
+                                     BorderThickness="0"
+                                     Foreground="Gray"
+                                     CaretBrush="Gray"
+                                     Margin="8,0,0,0"
+                                     >
+
+                                <TextBox.InputBindings>
+                                    <!--!!!!!!!!!!!-->
+                                </TextBox.InputBindings>
+                            </TextBox>
+
+                            <TextBlock IsHitTestVisible="False"
+                                       Text="{TemplateBinding Name}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       Margin="10,0,0,0"
+                                       Foreground="DarkGray">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchingField}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+            
+        </Setter>
+
+    </Style>
+</ResourceDictionary>
