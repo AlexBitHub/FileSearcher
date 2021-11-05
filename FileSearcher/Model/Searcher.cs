@@ -109,25 +109,6 @@ namespace FileSearcher.Model
             await StartSearchAsync(startedPath);
         }
 
-        async void  SearchinFile(string path, FileItem ObservableFolder)
-        {
-            string[] NameFiles = Directory.GetFiles(path);
-            foreach (var nameFile in NameFiles)
-            {
-                await Awaiting(cancelToken.Token);
-                if (cancelToken.IsCancellationRequested)
-                    return;
-                Thread.Sleep(260);
-                AmountSeenFiles += 1;
-                string ClearNameFile = Path.GetFileNameWithoutExtension(nameFile);
-                if (RegularExprsn.IsMatch(ClearNameFile))
-                {
-                    AmountMatchFiles += 1;
-                    var newNode = new FileItem(ClearNameFile);
-                    _dispatcher.Invoke(() => ObservableFolder.Items.Add(newNode));
-                }
-            }
-
-        }
+        
     }
 }
