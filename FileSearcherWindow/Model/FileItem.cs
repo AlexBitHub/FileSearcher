@@ -17,23 +17,22 @@ namespace FileSearcherWindow.Model
             Title = title;
             Items = new ObservableCollection<FileItem>();
         }
-        //public void AddItem(FileItem item) { Items.Add(item); }
-        public void Print()
-        {
-            if (Items != null)
-            {
-                Console.Write($"Files in {Title}: ");
-                foreach (var item in Items)
-                {
-                    Console.Write($"{item.Title} ");
-                };
-                Console.WriteLine("\n");
-                foreach (var item in Items)
-                {
-                    item.Print();
-                }
-            }
+        //public void Print()
+        //{
+        //    if (Items != null)
+        //    {
+        //        Console.Write($"Files in {Title}: ");
+        //        foreach (var item in Items)
+        //        {
+        //            Console.Write($"{item.Title} ");
+        //        };
+        //        Console.WriteLine("\n");
+        //        foreach (var item in Items)
+        //        {
+        //            item.Print();
+        //        }
+        //    }
 
-        }
+        //}
     }
 }

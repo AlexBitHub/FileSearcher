@@ -20,11 +20,6 @@
 
     <Window.Resources>
         <model:Searcher x:Key="MySearcher"/>
-        <!--<ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="./Themes/SearchingField.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>-->
     </Window.Resources>
 
     <Grid>
@@ -77,11 +72,6 @@
             </Border>
             <Border BorderBrush="#36393F" CornerRadius="6" BorderThickness="3" Grid.Row="1" Margin="0,2,2,0">
                 <TreeView Name="TreeViewFiles" Grid.Row="1" BorderThickness="0" Background="#2F3136" ItemsSource="{Binding SearcherModel.ObservableFiles, Mode=TwoWay}">
-                    <!--<TreeView.ItemTemplate>
-                        <HierarchicalDataTemplate ItemsSource="{Binding Items}" DataType="{x:Type model:FileItem}">
-                            <TextBlock Text="{Binding Title}" Foreground="White" />
-                        </HierarchicalDataTemplate>
-                    </TreeView.ItemTemplate>-->
                     <TreeView.Resources>
                         <HierarchicalDataTemplate DataType="{x:Type model:FileItem}"
                                                   ItemsSource="{Binding Items}">
@@ -157,9 +147,6 @@
                     <ColumnDefinition Width="87*"/>
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
-                <!--<TextBox Height="40" x:Name="Regex" Text="{Binding SearcherModel.StringRegex}"
-                         Style="{StaticResource SearchingField}"
-                         Grid.ColumnSpan="3" Margin="8,10"/>-->
                 <Border CornerRadius="8" Background="#2F3136" Height="40" Grid.ColumnSpan="3" Margin="8,10">
                     <Grid>
                         <TextBox VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalAlignment="Stretch"
@@ -193,26 +180,6 @@
                         <Image Source="./Icons/play.png"
                                                 RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform"
                                                 Width="20" Height="20"/>
-                        <!--<Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type Button}">
-                                            <Image Source="./Icons/play.png"
-                                                RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform"
-                                                Width="20" Height="20"/>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding}">
-                                        <Setter Property="Visibility" Value=""
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>-->
-                           
-                        
                     </Button>
                     <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" 
                             Visibility="{Binding VisiblePause}" Command="{Binding PauseSearchingCommand}">

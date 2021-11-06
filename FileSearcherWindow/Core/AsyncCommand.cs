@@ -53,15 +53,12 @@ namespace FileSearcherWindow.Core
                 {
                     _isExecuting = true;
                     await _execute(par);
-                    Console.WriteLine("End operation in try");
                 }
                 finally
                 {
                     _isExecuting = false;
-                    Console.WriteLine("End operation in finaly");
                 }
             }
-            Console.WriteLine("End operation in ExecuteAsync");
             RaiseCanExecuteChanged();
         }
 
@@ -78,13 +75,11 @@ namespace FileSearcherWindow.Core
             try
             {
                 await task;
-                Console.WriteLine("End operation in try FAFSA");
             }
             catch(Exception ex)
             {
                 handler?.HandleError(ex);
             }
-            Console.WriteLine("End operation in FAFSA");
         }
     }
 }

@@ -123,6 +123,7 @@ namespace FileSearcherWindow.Model
         {
             while (IsWaiting)
             {
+                Timing.timer.IsEnabled = false;
                 try
                 {
                     await Task.Delay(10, CancelToken);
@@ -132,8 +133,9 @@ namespace FileSearcherWindow.Model
                     IsWaiting = false;
                 }
             }
+            Timing.timer.IsEnabled = true;
         }
-        //async Task SearchingFile(string path, FileItem Node)
+
         async void SearchingFile(string path, FileItem ObservableFolder)
         {
             string[] NameFiles = Directory.GetFiles(path);
@@ -152,7 +154,6 @@ namespace FileSearcherWindow.Model
                     AmountMatchFiles += 1;
                     var newNode = new FileItem(ClearNameFile);
                     _dispatcher.Invoke(() => ObservableFolder.Items.Add(newNode));
-                    //dispatcher.BeginInvoke(new Action(() => ObservableFolder.Items.Add(new FileItem(ClearNameFile))));
                 }
             }
 
@@ -170,12 +171,10 @@ namespace FileSearcherWindow.Model
             }
             if (AmountSeenFiles == AmountFilesInDir)
             {
-                Console.WriteLine("THE END OPERATION");
                 Timing.timer.Stop();
             }
         }
 
-        //public async Task StartSearch(string startedPath)
         public void StartSearch(string startedPath)
         {
             _dispatcher.Invoke(() => ObservableFiles.Clear());
@@ -184,10 +183,7 @@ namespace FileSearcherWindow.Model
             
             FileItem StartedFolder = new FileItem(Path.GetFileNameWithoutExtension(startedPath));
             _dispatcher.Invoke(() => ObservableFiles.Add(StartedFolder));
-            //await Task.Run(() => SearchingFile(startedPath, StartedFolder));
-            //await SearchingFile(startedPath, StartedFolder);
             SearchingFile(startedPath, StartedFolder);
-            Console.WriteLine("Выход из функции в синхронном методе");
             
         }
 
@@ -201,8 +197,6 @@ namespace FileSearcherWindow.Model
             Timing.timer.Start();
 
             await Task.Run(() => StartSearch(startedPath));
-
-            Console.WriteLine("Выход из функции в Асинхронном методе");
             Timing.timer.Stop();
         }
     }

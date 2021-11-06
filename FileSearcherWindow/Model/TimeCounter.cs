@@ -40,7 +40,6 @@ namespace FileSearcherWindow.Model
         {
             _totalSeconds += 1;
             TimeExecute = string.Format("{0:hh\\:mm\\:ss}", TimeSpan.FromSeconds(_totalSeconds).Duration());
-            //CommandManager.InvalidateRequerySuggested();
         }
     }
 }

@@ -55,9 +55,7 @@ namespace FileSearcherWindow.MVVM.ViewModel
         {
             if (SearcherModel.IsWaiting)
             {
-                //Console.WriteLine("Снять с паузы");
                 SearcherModel.IsWaiting = !SearcherModel.IsWaiting;
-                SearcherModel.Timing.timer.IsEnabled = !SearcherModel.Timing.timer.IsEnabled;
                 VisiblePlay = Visibility.Collapsed;
                 VisiblePause = Visibility.Visible;
                 return;
@@ -68,15 +66,12 @@ namespace FileSearcherWindow.MVVM.ViewModel
                 VisiblePause = Visibility.Visible;
                 IsBusy = true;
                 await SearcherModel.StartSearchAsync(startedPath);
-                //Console.WriteLine("Выход из блока try");
             }
             finally
             {
                 VisiblePlay = Visibility.Visible;
                 VisiblePause = Visibility.Collapsed;
                 IsBusy = false;
-                //Console.WriteLine("!!!!!!stop here");
-                //SearcherModel.Timing.Stop();
             }
         }
         private bool CanExecuteAsync(string par = null)
@@ -87,7 +82,6 @@ namespace FileSearcherWindow.MVVM.ViewModel
         private void PauseSearching()
         {
             SearcherModel.IsWaiting = !SearcherModel.IsWaiting;
-            SearcherModel.Timing.timer.IsEnabled = !SearcherModel.Timing.timer.IsEnabled;
             VisiblePlay = Visibility.Visible;
             VisiblePause = Visibility.Collapsed;
         }
